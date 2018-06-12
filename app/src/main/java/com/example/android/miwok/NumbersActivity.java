@@ -3,6 +3,13 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -12,28 +19,25 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         //declare an array called words, to store 10 string elements
-        String[] words = new String[10];
+        ArrayList<Word> words = new ArrayList<Word>();
 
-        words[0] = "one";
-        words[1] = "two";
-        words[2] = "three";
-        words[3] = "four";
-        words[4] = "five";
-        words[5] = "six";
-        words[6] = "seven";
-        words[7] = "eight";
-        words[8] = "nine";
-        words[9] = "ten";
+        words.add(new Word("One","Moja", R.drawable.number_one));
+        words.add(new Word("Two","Mbili", R.drawable.number_two));
+        words.add(new Word("Three","Tatu", R.drawable.number_three));
+        words.add(new Word("Four","Nne", R.drawable.number_four));
+        words.add(new Word("Five","Tano", R.drawable.number_five));
+        words.add(new Word("Six","Sita", R.drawable.number_six));
+        words.add(new Word("Seven","Saba", R.drawable.number_seven));
+        words.add(new Word("Eight","Nane", R.drawable.number_eight));
+        words.add(new Word("Nine","Tisa", R.drawable.number_nine));
+        words.add(new Word("Ten","Kumi", R.drawable.number_ten));
 
-        Log.v("Numbers Activity", "Word at index 0: " + words[0]);
-        Log.v("Numbers Activity", "Word at index 1: " + words[1]);
-        Log.v("Numbers Activity", "Word at index 2: " + words[2]);
-        Log.v("Numbers Activity", "Word at index 3: " + words[3]);
-        Log.v("Numbers Activity", "Word at index 4: " + words[4]);
-        Log.v("Numbers Activity", "Word at index 5: " + words[5]);
-        Log.v("Numbers Activity", "Word at index 6: " + words[6]);
-        Log.v("Numbers Activity", "Word at index 7: " + words[7]);
-        Log.v("Numbers Activity", "Word at index 8: " + words[8]);
-        Log.v("Numbers Activity", "Word at index 9: " + words[9]);
+
+        WordAdapter adapter = new WordAdapter(this, words);
+
+        ListView listView = findViewById(R.id.list);
+
+        listView.setAdapter(adapter);
+
     }
 }
